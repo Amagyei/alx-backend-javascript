@@ -1,44 +1,44 @@
-import Currency from './3-currency.js'
+import Currency from './3-currency';
 
 export default class Pricing {
-    constructor(amount, currency) {
-        this.amount = amount;
-        this.currency = currency;
-    }
+  constructor(amount, currency) {
+    this.amount = amount;
+    this.currency = currency;
+  }
 
-    get amount() {
-        return this._amount;
-    }
+  get amount() {
+    return this._amount;
+  }
 
-    set amount(value) {
-        if (typeof value !== 'number') {
-            throw new TypeError('Amount must be a number');
-        }
-        this._amount = value;
+  set amount(value) {
+    if (typeof value !== 'number') {
+      throw new TypeError('Amount must be a number');
     }
+    this._amount = value;
+  }
 
-    get currency() {
-        return this._currency;
-    }
+  get currency() {
+    return this._currency;
+  }
 
-    set currency(value) {
-        if (!(value instanceof Currency)) {
-          throw new TypeError('currency must be a Currency');
-        }
-        this._currency = value;
+  set currency(value) {
+    if (!(value instanceof Currency)) {
+      throw new TypeError('currency must be a Currency');
     }
+    this._currency = value;
+  }
 
-    displayFullPrice() {
-        return `${this.amount} ${this.currency.name} (${this.currency.code})`;
-    }
+  displayFullPrice() {
+    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
+  }
 
-    static convertPrice(amount, conversionRate) {
-        if (typeof amount !== 'number') {
-            throw new Typeerror('Conversion Rate must be a number');
-        }
-        if (typeof conversionRate !== 'number') {
-            throw new Typeerror(' must be a number');
-        }
-        return amount * conversionRate
+  static convertPrice(amount, conversionRate) {
+    if (typeof amount !== 'number') {
+      throw new TypeError('Conversion Rate must be a number');
     }
+    if (typeof conversionRate !== 'number') {
+      throw new TypeError(' must be a number');
+    }
+    return amount * conversionRate;
+  }
 }
